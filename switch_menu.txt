@@ -1,0 +1,217 @@
+#include<stdio.h>
+
+
+
+void menu(){
+	int n;
+	
+	printf("___________GESTION DE RESSOURCE HUMAINES___________\n");
+	printf("________________________MENU________________________\n");
+	printf("1- GESTION D'EMPLOYE\n");
+	printf("2- GESTION DE SERVICE\n");
+	printf("3- GESTION DE DIPLOME\n");
+    printf("4- QUITTER\n");
+	do {
+		printf("DONNEZ VOTRE CHOIX\n");
+		scanf("%d",n);
+		if(n==1)
+		{
+			printf("___________ESPACE EMPLOYE___________\n");
+			printf("1- AJOUTER EMPLOYE\n");
+			printf("2- CONSULTER EMPLOYE\n");
+			printf("3- MODIFIER EMPLOYE\n");
+			printf("4- RECHERCHER EMPLOYE\n");
+			printf("5- SUPPRIMER EMPLOYE\n");
+			printf("6- QUITTER\n");
+	
+				do{
+					printf("DONNEZ VOTRE CHOIX\n");
+				    scanf("%d",&n);
+			        switch (n)
+				     {
+					    case 1: 
+						  add_Employe();
+			              break;
+			
+					    case 2:
+						  consulter_Employe();
+					      break;
+			
+							case 3:
+							   modifier_Employe();
+			                   break;
+			                   
+								case 4:
+								   rechercher_Employe();
+								   break;
+			
+									case 5:	
+									    supprimer_Employe();
+			                            break;
+			
+										default:
+										   exit(0);
+										   break;}
+							}while(n!=1&&n!=2&&n!=3&&n!=4&&n!=5&&n!=6);
+    }
+        else if(n==2)
+		{
+			printf("___________ESPACE SERVICE___________");
+			printf("1- AJOUTER SERVICE");
+			printf("2- CONSULTER SERVICE");
+			printf("3- MODIFIER SERVICE");
+			printf("4- RECHERCHER SERVICE");
+			printf("5- MODIFIER SERVICE");
+			printf("6- SUPPRIMER SERVICE");
+			printf("7- QUITTER");
+	
+				do{
+				    scanf("%d",&n);
+			        switch(n)
+			        {
+				      case 1: 
+					      add_Service();
+				          break;
+			
+					    case 2:
+						      consulter_Service();
+					          break;
+			
+							case 3 :
+							   modifier_Service();
+			                   break;
+			                   
+								case 4:
+								   {
+								   rechercher_Service();}
+								   break;
+			
+									case 5:	
+									  supprimer_Service();
+			                          break;
+			
+										default:
+										    exit(0);
+										    break;}
+							}while(n!=1&&n!=2&&n!=3&&n!=4&&n!=5&&n!=6);
+     }
+        
+        else if(n==3)
+		{
+			printf("___________ESPACE DIPLOME___________");
+			printf("1- AJOUTER DIPLOME");
+			printf("2- CONSULTER DIPLOME");
+			printf("3- MODIFIER DIPLOME");
+			printf("4- RECHERCHER DIPLOME");
+			printf("5- MODIFIER DIPLOME");
+			printf("6- SUPPRIMER DIPLOME");
+			printf("7- QUITTER");
+	
+				do{
+				    scanf("%d",&n);
+			        switch(n)
+			        {
+				      case 1: 
+					    add_Diplome();
+				        break;
+			
+					    case 2:
+						   consulter_Diplome();
+					       break;
+			
+							case 3:
+							  modifier_Diplome();
+			                  break;
+			                   
+								case 4:
+								  rechercher_Diplome();
+								  break;
+			
+									case 5:	
+									  supprimer_Diplome();
+			                          break;
+			
+										default:
+										  exit(0);
+										  break;}
+							}while(n!=1&&n!=2&&n!=3&&n!=4&&n!=5&&n!=6);
+		}
+		
+	else 
+		exit(0);
+	}while(n!=1&&n!=2&&n!=3&&n!=4);
+
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//fonction : ajouter un  employe
+   Employe add_Employe(Employe e) {
+   	Service s;
+   	Diplome d;
+   	int n,i;
+	FILE *file = openfile("a+");
+	
+	//fprintf(file,"\n");
+  	printf("\n\n\n");
+
+    printf("______________________ APPEL ADD EMPLOYE : _____________________\n");
+	printf("entrer id Employe :");
+	scanf("%d",&e.idEmp);
+	fprintf(file,"%d\t",e.idEmp);
+
+    printf("entrer nom d'Employe : ");
+	scanf("%s",e.nomEmp);
+	fprintf(file,"%s\t",e.nomEmp);
+
+    printf("entrer prenom d'Employe : ");
+	scanf("%s",&e.prenomEmp);
+	fprintf(file,"%s\t",e.prenomEmp);
+    printf("\n\n\n");
+	
+	printf("______________ entrer date naissance d'Employe :_______________\n");
+	printf("JOUR :");
+	scanf("%d",&e.dateNaissEmp.jour);
+	printf("MOIS :");
+	scanf("%d",&e.dateNaissEmp.mois);
+	printf("ANNEE :");
+	scanf("%d",&e.dateNaissEmp.annee);
+	fprintf(file,"%d\t%d\t%d\t",e.dateNaissEmp.jour,e.dateNaissEmp.mois,e.dateNaissEmp.annee);
+	printf("\n\n\n");
+
+	printf("____________ entrer date de recrutement d'Employe :____________\n");
+	printf("JOUR :");
+	scanf("%d",&e.dateRecEmp.jour);
+	printf("MOIS :");
+	scanf("%d",&e.dateRecEmp.mois);
+	printf("ANNEE :");
+	scanf("%d",&e.dateRecEmp.annee);
+	fprintf(file,"%d\t%d\t%d\n",e.dateRecEmp.jour,e.dateRecEmp.mois,e.dateRecEmp.annee);
+	printf("\n\n");
+	
+    s= add_Service(s);  
+    printf("entrer le nombre du diplome Employe :");
+	scanf("%d",&n);
+	 
+		for(i=0;i<=n;i++)
+		{
+	d=add_Diplome(d);
+     	}
+     	
+	fclose(file);
+	return e;
+}
